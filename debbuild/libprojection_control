@@ -1,0 +1,8 @@
+Package: volcano-ash3d-projection
+Version: 1.0-0
+Architecture: i386
+Maintainer: Hans Schwaiger <hschwaiger@usgs.gov>
+Depends: 
+Installed-Size:
+Homepage: https://code.usgs.gov/vsc/ash3d/volcano-ash3d-projection
+Description: libprojection is a fortran 90 module that contains subroutines that can convert between lon,lat and various projections commonly used in numerical weather prediction forecast/reanalysis products.

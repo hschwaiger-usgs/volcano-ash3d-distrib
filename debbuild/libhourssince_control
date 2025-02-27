@@ -1,0 +1,8 @@
+Package: volcano-ash3d-hourssince
+Version: 1.0-0
+Architecture: i386
+Maintainer: Hans Schwaiger <hschwaiger@usgs.gov>
+Depends: 
+Installed-Size:
+Homepage: https://code.usgs.gov/vsc/ash3d/volcano-ash3d-hourssince
+Description: libhourssince is a collection of functions and subroutines that calculate the number of hours of a given calendar date from Jan. 1 of a reference year.

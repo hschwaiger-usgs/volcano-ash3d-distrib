@@ -1,0 +1,8 @@
+Package: volcano-ash3d-metreader
+Version: 1.0-0
+Architecture: i386
+Maintainer: Hans Schwaiger <hschwaiger@usgs.gov>
+Depends: volcano-ash3d-projection, volcano-ash3d-hourssince, libnetcdf-dev, libnetcdff-dev, libeccodes0, libeccodes-dev
+Installed-Size:
+Homepage: https://code.usgs.gov/vsc/ash3d/volcano-ash3d-metreader
+Description: libmetreader is a library written in fortran 90 that provides an interface to numerical weather prediction (NWP) data, or other forms of meteorological data, such as radiosonde or other 1-d data.
