@@ -1,0 +1,45 @@
+[
+  {
+    "name": "volcano-ash3d-distrib",
+    "organization": "U.S. Geological Survey",
+    "description": "A collection of scripts and instructions for building installation binaries for Ash3d.",
+    "version": "main",
+    "status": "Development",
+
+    "permissions": {
+      "usageType": "openSource",
+      "licenses": [
+        {
+          "name": "Public Domain, CC0-1.0",
+          "URL": "https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib/-/raw/main/LICENSE.md"
+        }
+      ]
+    },
+
+    "homepageURL": "https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib/",
+    "downloadURL": "https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib/-/archive/main/volcano-ash3d-distrib-main.zip",
+    "disclaimerURL": "https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib/-/raw/main/DISCLAIMER.md",
+    "repositoryURL": "https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib.git",
+    "vcs": "git",
+
+    "laborHours": 0,
+
+    "tags": [
+      "USGS",
+      "Ash3d"
+    ],
+
+    "languages": [
+      "fortran"
+    ],
+
+    "contact": {
+      "name": "Hans F. Schwaiger",
+      "email": "hschwaiger@usgs.gov"
+    },
+
+    "date": {
+      "metadataLastUpdated": "2024-10-22"
+    }
+  }
+]
