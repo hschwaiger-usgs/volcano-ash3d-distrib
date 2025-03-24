@@ -102,7 +102,8 @@
     - name: Clone volcano-ash3d-hourssince git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-hourssince.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-hourssince.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-hourssince.git'
+        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-hourssince.git'
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-hourssince
         accept_hostkey: yes
         force: yes
@@ -116,7 +117,8 @@
     - name: Clone volcano-ash3d-projection git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-projection.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-projection.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-projection.git'
+        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-projection.git'
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-projection
         accept_hostkey: yes
         force: yes
@@ -130,7 +132,8 @@
     - name: Clone volcano-ash3d-metreader git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-metreader.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-metreader.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-metreader.git'
+        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-metreader.git'
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-metreader
         accept_hostkey: yes
         force: yes
@@ -235,7 +238,8 @@
     - name: Clone volcano-ash3d git repository
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d.git'
+        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d.git'
         dest: /home/ash3d/Programs/GIT/volcano-ash3d
         accept_hostkey: yes
         force: yes
@@ -251,7 +255,8 @@
     - name: Clone volcano-ash3d-web git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-web.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-web.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-web.git'
+        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-web.git'
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-web
         accept_hostkey: yes
         force: yes
