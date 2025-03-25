@@ -243,7 +243,7 @@
         dest: /home/ash3d/Programs/GIT/volcano-ash3d
         accept_hostkey: yes
         force: yes
-        become_user: ash3d
+      become_user: ash3d
     - name: Building Ash3d
       command: 'make all chdir=/home/ash3d/Programs/GIT/volcano-ash3d/src/'
     - name: Building Ash3d_PostProc
