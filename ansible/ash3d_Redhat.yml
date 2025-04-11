@@ -5,11 +5,11 @@
 #
 ## Update system
 # sudo dnf config-manager --set-enabled crb
-# sudo yum update
+# sudo dnf update
 #
 ## Add whatever certificate your network needs
 #
-# sudo yum install ansible
+# sudo dnf install ansible
 #
 # Re-runs will do very little. If needing to force reloads of all content 
 # delete these directories/files on the target server: 
@@ -23,6 +23,12 @@
   hosts: 127.0.0.1
   connection: local
   become: yes
+  vars:
+    #githost: https://github.com/DOI-USGS
+    #githost: https://code.usgs.gov/vsc/ash3d
+    githost: https://github.com/hschwaiger-usgs
+    #ash3dbranch: master
+    ash3dbranch: devel
   tasks:
 
     - name: Create bin directory
@@ -103,7 +109,8 @@
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-hourssince.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-hourssince.git'
-        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-hourssince.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-hourssince.git'
+        repo: "{{ githost }}/volcano-ash3d-hourssince.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-hourssince
         accept_hostkey: yes
         force: yes
@@ -118,7 +125,8 @@
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-projection.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-projection.git'
-        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-projection.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-projection.git'
+        repo: "{{ githost }}/volcano-ash3d-projection.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-projection
         accept_hostkey: yes
         force: yes
@@ -133,7 +141,8 @@
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-metreader.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-metreader.git'
-        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-metreader.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-metreader.git'
+        repo: "{{ githost }}/volcano-ash3d-metreader.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-metreader
         accept_hostkey: yes
         force: yes
@@ -246,8 +255,9 @@
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d.git'
-        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d.git'
-        version: devel
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d.git'
+        repo: "{{ githost }}/volcano-ash3d.git"
+        version: "{{ ash3dbranch }}"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d
         accept_hostkey: yes
         force: yes
@@ -264,7 +274,8 @@
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-web.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-web.git'
-        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-web.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-web.git'
+        repo: "{{ githost }}/volcano-ash3d-web.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-web
         accept_hostkey: yes
         force: yes
@@ -280,7 +291,8 @@
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-distrib.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib.git'
-        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-distrib.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-distrib.git'
+        repo: "{{ githost }}/volcano-ash3d-distrib.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-distrib
         accept_hostkey: yes
         force: yes
