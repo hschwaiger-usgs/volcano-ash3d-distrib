@@ -247,6 +247,7 @@
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d.git'
         #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d.git'
         repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d.git'
+        version: devel
         dest: /home/ash3d/Programs/GIT/volcano-ash3d
         accept_hostkey: yes
         force: yes
@@ -272,5 +273,17 @@
       command: 'make all chdir=/home/ash3d/Programs/GIT/volcano-ash3d-web/src/'
     - name: Installing Ash3d_web
       command: 'make install chdir=/home/ash3d/Programs/GIT/volcano-ash3d-web/src/'
+
+#    This repo is not necessary, but it ensures that we have the latest ansible scripts
+#    git clone https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib.git
+    - name: Clone volcano-ash3d-distrib git repository.
+      git:
+        #repo: 'https://github.com/DOI-USGS/volcano-ash3d-distrib.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib.git'
+        repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-distrib.git'
+        dest: /home/ash3d/Programs/GIT/volcano-ash3d-distrib
+        accept_hostkey: yes
+        force: yes
+      become_user: ash3d
 
     ########
