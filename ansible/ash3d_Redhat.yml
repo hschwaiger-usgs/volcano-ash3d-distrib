@@ -205,7 +205,7 @@
       cron:
         name: "Download ECMWF 00"
         user: ash3d
-        hour: '08'
+        hour: '09'
         minute: '01'
         job: /opt/USGS/bin/autorun_scripts/autorun_ecmwf.sh 0p50 0             > /home/ash3d/cron_logs/ecmwf00_log      2>&1
     - name: Install GFS 12 download scripts to crontab
