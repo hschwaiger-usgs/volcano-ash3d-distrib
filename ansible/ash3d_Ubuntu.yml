@@ -23,6 +23,12 @@
   hosts: 127.0.0.1
   connection: local
   become: yes
+  vars:
+    #githost: https://github.com/DOI-USGS
+    #githost: https://code.usgs.gov/vsc/ash3d
+    githost: https://github.com/hschwaiger-usgs
+    #ash3dbranch: master
+    ash3dbranch: devel
   tasks:
 
     - name: Create bin directory
@@ -63,9 +69,9 @@
     # zip is needed for bundeling output and converting kml to kmz files
     # perl is used in some post-processing scripts
     # nco is a netcdf manipulation package used in post-processing (mainly ncks)
-    # gmt is the primary mapping package used in post-processing scripts (also in Ash3d_Post_Proc)
+    # GMT is the primary mapping package used in post-processing scripts (also in Ash3d_Post_Proc)
     # tofrodos is used in post-processing to strip control characters from text files
-    # imagemagick is used to assemble final images with legends/disclaimers/banners.
+    # ImageMagick is used to assemble final images with legends/disclaimers/banners.
     # gifsicle produces animated gifs
     # ghostscript is used to convert ps,eps,pdf files
     # java is needed run the script the uses netcdf-java to convert grib to netcdf files
@@ -88,7 +94,9 @@
     - name: Clone volcano-ash3d-hourssince git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-hourssince.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-hourssince.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-hourssince.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-hourssince.git'
+        repo: "{{ githost }}/volcano-ash3d-hourssince.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-hourssince
         accept_hostkey: yes
         force: yes
@@ -102,7 +110,9 @@
     - name: Clone volcano-ash3d-projection git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-projection.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-projection.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-projection.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-projection.git'
+        repo: "{{ githost }}/volcano-ash3d-projection.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-projection
         accept_hostkey: yes
         force: yes
@@ -116,7 +126,9 @@
     - name: Clone volcano-ash3d-metreader git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-metreader.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-metreader.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-metreader.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-metreader.git'
+        repo: "{{ githost }}/volcano-ash3d-metreader.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-metreader
         accept_hostkey: yes
         force: yes
@@ -175,6 +187,13 @@
         hour: '06'
         minute: '01'
         job: /opt/USGS/bin/autorun_scripts/autorun_gfs.sh 0p50 0             > /home/ash3d/cron_logs/gfs00_log      2>&1
+    - name: Install ECMWF 00 download scripts to crontab
+      cron:
+        name: "Download ECMWF 00"
+        user: ash3d
+        hour: '09'
+        minute: '01'
+        job: /opt/USGS/bin/autorun_scripts/autorun_ecmwf.sh 0p25 0             > /home/ash3d/cron_logs/ecmwf00_log      2>&1
     - name: Install GFS 12 download scripts to crontab
       cron:
         name: "Download GFS 12"
@@ -221,11 +240,14 @@
     - name: Clone volcano-ash3d git repository
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d.git'
+        repo: "{{ githost }}/volcano-ash3d.git"
+        version: "{{ ash3dbranch }}"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d
         accept_hostkey: yes
         force: yes
-        become_user: ash3d
+      become_user: ash3d
     - name: Building Ash3d
       command: 'make all chdir=/home/ash3d/Programs/GIT/volcano-ash3d/src/'
     - name: Building Ash3d_PostProc
@@ -237,7 +259,9 @@
     - name: Clone volcano-ash3d-web git repository.
       git:
         #repo: 'https://github.com/DOI-USGS/volcano-ash3d-web.git'
-        repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-web.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-web.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-web.git'
+        repo: "{{ githost }}/volcano-ash3d-web.git"
         dest: /home/ash3d/Programs/GIT/volcano-ash3d-web
         accept_hostkey: yes
         force: yes
@@ -246,5 +270,18 @@
       command: 'make all chdir=/home/ash3d/Programs/GIT/volcano-ash3d-web/src/'
     - name: Installing Ash3d_web
       command: 'make install chdir=/home/ash3d/Programs/GIT/volcano-ash3d-web/src/'
+
+#    This repo is not necessary, but it ensures that we have the latest ansible scripts
+#    git clone https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib.git
+    - name: Clone volcano-ash3d-distrib git repository.
+      git:
+        #repo: 'https://github.com/DOI-USGS/volcano-ash3d-distrib.git'
+        #repo: 'https://code.usgs.gov/vsc/ash3d/volcano-ash3d-distrib.git'
+        #repo: 'https://github.com/hschwaiger-usgs/volcano-ash3d-distrib.git'
+        repo: "{{ githost }}/volcano-ash3d-distrib.git"
+        dest: /home/ash3d/Programs/GIT/volcano-ash3d-distrib
+        accept_hostkey: yes
+        force: yes
+      become_user: ash3d
 
     ########

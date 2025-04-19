@@ -13,7 +13,7 @@
 #
 # Re-runs will do very little. If needing to force reloads of all content 
 # delete these directories/files on the target server: 
-# If you are pushing to remote hosts, update your local hosts file and make suer
+# If you are pushing to remote hosts, update your local hosts file and make sure
 # the server tag is changed below.
 # hosts are listed in /etc/ansible/hosts
 ---
@@ -207,7 +207,7 @@
         user: ash3d
         hour: '09'
         minute: '01'
-        job: /opt/USGS/bin/autorun_scripts/autorun_ecmwf.sh 0p50 0             > /home/ash3d/cron_logs/ecmwf00_log      2>&1
+        job: /opt/USGS/bin/autorun_scripts/autorun_ecmwf.sh 0p25 0             > /home/ash3d/cron_logs/ecmwf00_log      2>&1
     - name: Install GFS 12 download scripts to crontab
       cron:
         name: "Download GFS 12"
